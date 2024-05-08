@@ -1,7 +1,7 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Rollout
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: simple-webapp-rollout
+  name: simple-webapp-deployment
   namespace: argo-rollouts
 spec:
   replicas: 3
@@ -19,11 +19,3 @@ spec:
         ports:
         - containerPort: 8081
         command: ["./main"]
-  strategy:
-    canary:
-      canaryService: simple-webapp-canary
-      stableService: simple-webapp
-      trafficRouting:
-        istio:
-          virtualService:
-            name: simple-webapp
