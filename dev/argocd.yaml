@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/elle-Bee/simple-webapp.git
     targetRevision: HEAD
-    path: '/'
+    path: "dev"
   destination:
     server: https://kubernetes.default.svc
     namespace: myapp
