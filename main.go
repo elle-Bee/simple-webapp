@@ -21,7 +21,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
         <!DOCTYPE html>
         <html>
         <head>
-            <title>Sample Web App</title>
+            <title>Simple Web App</title>
         </head>
         <body>
             <h1>Sample Web App</h1>
