@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: simple-webapp-rollout
+  namespace: argo-rollouts
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-webapp
+  template:
+    metadata:
+      labels:
+        app: simple-webapp
+    spec:
+      containers:
+      - name: simple-webapp-container
+        image: ellebee/sample-webapp:1.0
+        ports:
+        - containerPort: 8081
+        command: ["./main"]
+  strategy:
+    canary:
+      canaryService: simple-webapp-canary
+      stableService: simple-webapp
+      trafficRouting:
+        istio:
+          virtualService:
+            name: simple-webapp
